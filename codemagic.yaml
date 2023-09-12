@@ -9,12 +9,28 @@ workflows:
   #       - group-name
   hello-world:
     name: Hello world workflow
-    cache:
-      cache_paths:
-        - $HOME/.gradle/caches
-        - $CM_BUILD_DIR/node_modules
+    max_build_duration: 100
+    environment:
+      groups:
+        - capgo_credentials
     scripts:
-      - name: Install NPM Packages
-        script: npm ci
-      - name: Start Project
-        script: npm run start
+      - name: Install npm dependencies for Ionic project
+        script: | 
+          npm install @capgo/capacitor-updater
+          npx @capgo/cli login $CAPGO_TOKEN
+      - name: Update dependencies and copy web assets to native project
+        script: | 
+          npx cap sync
+      - name: Upload to Capgo
+        script: | 
+          npx @capgo/cli add 
+          npx @capgo/cli upload
+    # cache:
+    #   cache_paths:
+    #     - $HOME/.gradle/caches
+    #     - $CM_BUILD_DIR/node_modules
+    # scripts:
+    #   - name: Install NPM Packages
+    #     script: npm ci
+    #   - name: Start Project
+    #     script: npm run start
