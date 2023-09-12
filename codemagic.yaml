@@ -26,4 +26,4 @@ workflows:
           npx cap sync
       - name: Upload to Capgo
         script: | 
-          npx @capgo/cli bundle upload
+          npx @capgo/cli bundle upload -c production
