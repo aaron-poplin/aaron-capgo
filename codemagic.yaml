@@ -9,8 +9,6 @@ workflows:
   #       - group-name
   hello-world:
     name: Hello world workflow
-    instance_type: mac_pro
-    max_build_duration: 120
     cache:
       cache_paths:
         - $HOME/.gradle/caches
