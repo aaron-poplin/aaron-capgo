@@ -18,6 +18,9 @@ workflows:
         script: | 
           npm install @capgo/capacitor-updater
           npx @capgo/cli login $CAPGO_TOKEN
+      - name: Build
+        script: |
+          npm run build
       - name: Update dependencies and copy web assets to native project
         script: | 
           npx cap sync
