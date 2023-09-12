@@ -11,6 +11,8 @@ PODS:
     - Capacitor
   - CapacitorKeyboard (5.0.6):
     - Capacitor
+  - CapacitorSplashScreen (5.0.6):
+    - Capacitor
   - CapacitorStatusBar (5.0.6):
     - Capacitor
   - CapgoCapacitorUpdater (5.2.34):
@@ -28,6 +30,7 @@ DEPENDENCIES:
   - "CapacitorDialog (from `../../node_modules/@capacitor/dialog`)"
   - "CapacitorHaptics (from `../../node_modules/@capacitor/haptics`)"
   - "CapacitorKeyboard (from `../../node_modules/@capacitor/keyboard`)"
+  - "CapacitorSplashScreen (from `../../node_modules/@capacitor/splash-screen`)"
   - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
   - "CapgoCapacitorUpdater (from `../../node_modules/@capgo/capacitor-updater`)"
 
@@ -50,6 +53,8 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/haptics"
   CapacitorKeyboard:
     :path: "../../node_modules/@capacitor/keyboard"
+  CapacitorSplashScreen:
+    :path: "../../node_modules/@capacitor/splash-screen"
   CapacitorStatusBar:
     :path: "../../node_modules/@capacitor/status-bar"
   CapgoCapacitorUpdater:
@@ -63,11 +68,12 @@ SPEC CHECKSUMS:
   CapacitorDialog: 0f3c15dfe9414b83bc64aef4078f1b92bcfead26
   CapacitorHaptics: 1fffc1217c7e64a472d7845be50fb0c2f7d4204c
   CapacitorKeyboard: b978154b024a5f65e044908e37d15b7de58b9d12
+  CapacitorSplashScreen: 5fa2ab5e46cf5cc530cf16a51c80c7a986579ccd
   CapacitorStatusBar: 565c0a1ebd79bb40d797606a8992b4a105885309
   CapgoCapacitorUpdater: f52c17d475be667218eba3bcf71eec4ff45cd9a1
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   Version: de5907f2c5d0f3cf21708db7801d1d5401139486
 
-PODFILE CHECKSUM: 1fb5c157815b96471a42fe30cc83549b26e69124
+PODFILE CHECKSUM: 373ebc04ecf3452f192a7c71ce8cb43b663ddf72
 
 COCOAPODS: 1.12.1
