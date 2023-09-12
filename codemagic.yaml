@@ -1,0 +1,13 @@
+workflows:
+  ionic-capacitor-ios-workflow:
+    environment:
+      groups:
+        - group-name
+  ionic-capacitor-android-workflow:
+    environment:
+      groups:
+        - group-name
+
+
+
+
