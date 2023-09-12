@@ -26,14 +26,4 @@ workflows:
           npx cap sync
       - name: Upload to Capgo
         script: | 
-          npx @capgo/cli add 
-          npx @capgo/cli upload
-    # cache:
-    #   cache_paths:
-    #     - $HOME/.gradle/caches
-    #     - $CM_BUILD_DIR/node_modules
-    # scripts:
-    #   - name: Install NPM Packages
-    #     script: npm ci
-    #   - name: Start Project
-    #     script: npm run start
+          npx @capgo/cli bundle upload
