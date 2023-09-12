@@ -9,8 +9,7 @@ const config: CapacitorConfig = {
   },
   plugins: {
     CapacitorUpdater: {
-      privateKey: process.env['CAPGO_KEY'],
-      directUpdate: true
+      directUpdate: true,
     }
   }
 };
