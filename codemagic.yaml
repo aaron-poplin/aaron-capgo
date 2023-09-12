@@ -16,3 +16,5 @@ workflows:
     scripts:
       - name: Install NPM Packages
         script: npm ci
+      - name: Start Project
+        script: npm run start
