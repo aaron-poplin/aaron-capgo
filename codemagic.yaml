@@ -20,7 +20,7 @@ workflows:
           npx @capgo/cli login $CAPGO_TOKEN
       - name: Build
         script: |
-          npm run build
+          npm run build:sync
       - name: Update dependencies and copy web assets to native project
         script: | 
           npx cap sync
