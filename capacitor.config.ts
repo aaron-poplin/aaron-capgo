@@ -9,7 +9,10 @@ const config: CapacitorConfig = {
   },
   plugins: {
     CapacitorUpdater: {
+      // privateKey: process.env['CAPGO_KEY'],
+      autoUpdate: true,
       directUpdate: true,
+      // version: "0.0.7"
     }
   }
 };
