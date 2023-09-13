@@ -3,23 +3,26 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-import { CapacitorUpdater } from '@capgo/capacitor-updater';
-import { Dialog } from '@capacitor/dialog';
+import { CapacitorUpdater } from '@capgo/capacitor-updater'
+import { Dialog } from '@capacitor/dialog'
 
 CapacitorUpdater.addListener('updateAvailable', async (res) => {
   try {
-    await Dialog.alert({
+    const { value } = await Dialog.confirm({
       title: 'Update Available',
-      message: `Version ${res.bundle.version} is available. The app will update now`,
+      message: `Version ${res.bundle.version} is available. Would you like to update now?`,
     })
-    CapacitorUpdater.set(res.bundle)
+
+    if (value)
+      CapacitorUpdater.set(res.bundle)
+
   }
   catch (error) {
     console.log(error)
   }
-});
+})
 
-CapacitorUpdater.notifyAppReady();
+CapacitorUpdater.notifyAppReady()
 
 if (environment.production) {
   enableProdMode();
