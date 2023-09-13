@@ -15,7 +15,7 @@ PODS:
     - Capacitor
   - CapacitorStatusBar (5.0.6):
     - Capacitor
-  - CapgoCapacitorUpdater (5.2.34):
+  - CapgoCapacitorUpdater (5.2.35):
     - Alamofire
     - Capacitor
     - SSZipArchive
@@ -70,7 +70,7 @@ SPEC CHECKSUMS:
   CapacitorKeyboard: b978154b024a5f65e044908e37d15b7de58b9d12
   CapacitorSplashScreen: 5fa2ab5e46cf5cc530cf16a51c80c7a986579ccd
   CapacitorStatusBar: 565c0a1ebd79bb40d797606a8992b4a105885309
-  CapgoCapacitorUpdater: f52c17d475be667218eba3bcf71eec4ff45cd9a1
+  CapgoCapacitorUpdater: 2389db93514b8adc185abe807dfff3cea0e625c9
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   Version: de5907f2c5d0f3cf21708db7801d1d5401139486
 

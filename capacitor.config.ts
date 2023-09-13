@@ -9,6 +9,8 @@ const config: CapacitorConfig = {
   },
   plugins: {
     CapacitorUpdater: {
+      autoUpdate: true,
+      resetWhenUpdate: false,
       directUpdate: true,
     }
   }
