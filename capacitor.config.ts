@@ -5,15 +5,15 @@ const config: CapacitorConfig = {
   appName: 'aaron-capgo',
   webDir: 'www',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'https',
   },
   plugins: {
     CapacitorUpdater: {
       autoUpdate: true,
       resetWhenUpdate: false,
       directUpdate: true,
-    }
-  }
+    },
+  },
 };
 
 export default config;

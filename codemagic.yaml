@@ -15,15 +15,15 @@ workflows:
         - capgo_credentials
     scripts:
       - name: Install npm dependencies for Ionic project
-        script: | 
+        script: |
           npm install @capgo/capacitor-updater
           npx @capgo/cli login $CAPGO_TOKEN
       - name: Build
         script: |
           npm run build:sync
       - name: Update dependencies and copy web assets to native project
-        script: | 
+        script: |
           npx cap sync
       - name: Upload to Capgo
-        script: | 
+        script: |
           npx @capgo/cli bundle upload -c production
