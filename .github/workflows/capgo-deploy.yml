@@ -1,3 +1,5 @@
+name: Deploy to Capgo
+
 on: workflow_dispatch
 
 jobs:
