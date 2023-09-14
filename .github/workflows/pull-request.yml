@@ -1,0 +1,77 @@
+name: Pull Request
+
+on: pull_request
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+    #   - name: Authenticate NPM
+    #     run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
+      - name: Cache
+        id: node-modules
+        uses: actions/cache@v3
+        env:
+          cache-name: node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install Dependencies
+        if: steps.node-modules.outputs.cache-hit != 'true'
+        run: |
+          npm config set legacy-peer-deps true
+          npm ci
+
+      - name: Lint Check
+        run: npm run prettier:check
+
+      - name: Build Test
+        run: npm run build
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+    #   - name: Deploy Preview
+    #     id: deploy_preview
+    #     uses: FirebaseExtended/action-hosting-deploy@v0
+    #     with:
+    #       repoToken: '${{ secrets.GITHUB_TOKEN }}'
+    #       firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SUDSHARETEST }}'
+    #       expires: 1h
+    #       projectId: sudsharetest
+    #       target: nonProd
+
+    #   - name: Trigger QA Automation
+    #     uses: peter-evans/repository-dispatch@v2
+    #     with:
+    #       token: ${{ secrets.QA_TOKEN }}
+    #       repository: sudshare/sudshare-qa
+    #       event-type: customer-pr
+    #       client-payload: '{"firestore_temp_url": "${{ fromJson(steps.deploy_preview.outputs.urls)[0] }}"}'
+
+    #   - name: Trigger Workflow and Wait
+    #     uses: convictional/trigger-workflow-and-wait@v1.6.5
+    #     with:
+    #       owner: sudshare
+    #       repo: sudshare-qa
+    #       github_token: ${{ secrets.QA_TOKEN }}
+    #       workflow_file_name: Customer-PR-Webapp-Browser.yml
+    #       ref: master
+    #       wait_interval: 10
+    #       client_payload: '{"firestore_temp_url": "${{ fromJson(steps.deploy_preview.outputs.urls)[0] }}"}'
