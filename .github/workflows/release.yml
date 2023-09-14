@@ -25,8 +25,8 @@ jobs:
         run: |
           CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
           remote_repo="https://${GITHUB_ACTOR}:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git"
-          git pull $remote_repo $CURRENT_BRANCH
-          git push $remote_repo HEAD:$CURRENT_BRANCH --follow-tags --tags
+          git pull $remote_repo main
+          git push $remote_repo HEAD:main --follow-tags --tags
 
 # jobs:
 #   release:
