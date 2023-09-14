@@ -14,8 +14,8 @@ jobs:
         with:
           node-version: 14
 
-    #   - name: Authenticate NPM
-    #     run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+      - name: Authenticate NPM
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
 
       - name: Cache
         id: node-modules
