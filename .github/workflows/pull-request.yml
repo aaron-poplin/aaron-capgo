@@ -8,7 +8,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
@@ -32,43 +31,11 @@ jobs:
         run: |
           npm config set legacy-peer-deps true
           npm ci
-
       - name: Lint Check
         run: npm run prettier:check
-
       - name: Build Test
         run: npm run build
-
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
-
-    #   - name: Deploy Preview
-    #     id: deploy_preview
-    #     uses: FirebaseExtended/action-hosting-deploy@v0
-    #     with:
-    #       repoToken: '${{ secrets.GITHUB_TOKEN }}'
-    #       firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SUDSHARETEST }}'
-    #       expires: 1h
-    #       projectId: sudsharetest
-    #       target: nonProd
-
-    #   - name: Trigger QA Automation
-    #     uses: peter-evans/repository-dispatch@v2
-    #     with:
-    #       token: ${{ secrets.QA_TOKEN }}
-    #       repository: sudshare/sudshare-qa
-    #       event-type: customer-pr
-    #       client-payload: '{"firestore_temp_url": "${{ fromJson(steps.deploy_preview.outputs.urls)[0] }}"}'
-
-    #   - name: Trigger Workflow and Wait
-    #     uses: convictional/trigger-workflow-and-wait@v1.6.5
-    #     with:
-    #       owner: sudshare
-    #       repo: sudshare-qa
-    #       github_token: ${{ secrets.QA_TOKEN }}
-    #       workflow_file_name: Customer-PR-Webapp-Browser.yml
-    #       ref: master
-    #       wait_interval: 10
-    #       client_payload: '{"firestore_temp_url": "${{ fromJson(steps.deploy_preview.outputs.urls)[0] }}"}'

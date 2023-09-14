@@ -1,0 +1,20 @@
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: "Build code and release"
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        id: install_code
+        run: npm ci
+      - name: Build
+        id: build_code
+        run: npm run build
+        # env: # Remove both lines  if you don't need it
+        #   FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }} # Exemple of env var coming from a secret
+      - name: Create Release
+        id: create_release
+        run: npx @capgo/cli@latest bundle upload -a ${{ secrets.CAPGO_TOKEN }} -c production
