@@ -1,0 +1,40 @@
+name: Release
+
+on:
+  push:
+
+jobs:
+  release:
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+      - name: Authenticate NPM
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+      - name: Cache
+        id: node-modules
+        uses: actions/cache@v3
+        env:
+          cache-name: node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Install Dependencies
+        if: steps.node-modules.outputs.cache-hit != 'true'
+        run: |
+          npm config set legacy-peer-deps true
+          npm ci
+      - name: Run semantic-release
+        run: npx semantic-release
