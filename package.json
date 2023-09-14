@@ -12,7 +12,8 @@
     "test": "ng test",
     "android": "ionic cap run android --no-build --open",
     "ios": "ionic cap run ios --no-build --open",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "prettier:check": "prettier 'src/**/*.{js,jsx,ts,tsx,html,css,scss}' --check ."
   },
   "private": true,
   "dependencies": {
@@ -36,6 +37,7 @@
     "@capgo/capacitor-updater": "^5.2.35",
     "@ionic/angular": "^7.0.0",
     "ionicons": "^7.0.0",
+    "prettier": "^3.0.3",
     "release-please": "^15.13.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
