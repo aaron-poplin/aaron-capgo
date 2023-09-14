@@ -13,7 +13,8 @@
     "android": "ionic cap run android --no-build --open",
     "ios": "ionic cap run ios --no-build --open",
     "lint": "ng lint",
-    "prettier:check": "prettier 'src/**/*.{js,jsx,ts,tsx,html,css,scss}' --check ."
+    "prettier:check": "prettier 'src/**/*.{js,jsx,ts,tsx,html,css,scss}' --check .",
+    "prettier:fix": "prettier 'src/**/*.{js,jsx,ts,tsx,html,css,scss}' --write ."
   },
   "private": true,
   "dependencies": {

@@ -3,8 +3,8 @@ name: Build source code and send to Capgo
 on:
   push:
     tags:
-      - '*'
-      
+      - "*"
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
