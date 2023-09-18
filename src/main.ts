@@ -9,7 +9,7 @@ import { environment } from './environments/environment';
 CapacitorUpdater.addListener('updateAvailable', async (res) => {
   try {
     await Dialog.alert({
-      title: 'Update Available111',
+      title: 'Update Available',
       message: `Version ${res.bundle.version} is available. The app will update now`,
     });
     CapacitorUpdater.set(res.bundle);
@@ -17,6 +17,8 @@ CapacitorUpdater.addListener('updateAvailable', async (res) => {
     console.log(error);
   }
 });
+
+CapacitorUpdater.notifyAppReady();
 
 if (environment.production) {
   enableProdMode();
