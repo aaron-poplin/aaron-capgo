@@ -9,6 +9,7 @@ const config: CapacitorConfig = {
   },
   plugins: {
     CapacitorUpdater: {
+      // TODO: configure autoUpdate and directUpdate to reflect prod and dev env
       directUpdate: true,
     },
   },
